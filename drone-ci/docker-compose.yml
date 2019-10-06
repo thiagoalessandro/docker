@@ -4,8 +4,8 @@ services:
   drone-server:
     image: drone/drone:1.2.1
     ports:
-      - 8000:80
-      - 9000:443
+      - 8001:80
+      - 9001:443
     networks:
       - drone
     volumes:
@@ -17,11 +17,11 @@ services:
     environment:
       - DRONE_GITHUB_SKIP_VERIFY=true
       - DRONE_AGENTS_ENABLED=true
-      - DRONE_SERVER_HOST=localhost:8000
+      - DRONE_SERVER_HOST=localhost:8001
       - DRONE_SERVER_PROTO=http
       - DRONE_TLS_AUTOCERT=false
       - DRONE_OPEN=false
-      - DRONE_HOST=http://intelector.com.br:8000
+      - DRONE_HOST=http://intelector.com.br:8001
       - DRONE_GITHUB=true
       # Variables below set via drone.env file
       # - DRONE_USER_CREATE=
@@ -43,10 +43,9 @@ services:
     env_file:
       - drone.env
     environment:
-      - DRONE_RPC_SERVER=drone-server:8000
+      - DRONE_RPC_SERVER=drone-server:8001
       # Variables below set via drone.env file
       # - DRONE_RPC_SECRET=
-
 networks:
   drone:
     name: drone_network
