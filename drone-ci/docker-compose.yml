@@ -15,7 +15,7 @@ services:
     environment:
       - DRONE_GITHUB_SKIP_VERIFY=true
       - DRONE_AGENTS_ENABLED=true
-      - DRONE_SERVER_HOST=localhost:8001
+      - DRONE_SERVER_HOST=intelector.com.br:8001
       - DRONE_SERVER_PROTO=http
       - DRONE_TLS_AUTOCERT=false
       - DRONE_OPEN=false
