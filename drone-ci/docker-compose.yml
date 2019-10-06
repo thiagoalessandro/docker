@@ -1,4 +1,4 @@
-version: '3.5'
+version: '2'
 
 services:
   drone-server:
@@ -6,10 +6,8 @@ services:
     ports:
       - 8001:80
       - 9001:443
-    networks:
-      - drone
     volumes:
-      - ./drone-data:/var/lib/drone/
+      - drone-data:/var/lib/drone/
       - /var/run/docker.sock:/var/run/docker.sock
     env_file:
       - drone.env
@@ -36,8 +34,6 @@ services:
     restart: always
     depends_on:
       - drone-server
-    networks:
-      - drone
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     env_file:
@@ -46,6 +42,6 @@ services:
       - DRONE_RPC_SERVER=drone-server:8001
       # Variables below set via drone.env file
       # - DRONE_RPC_SECRET=
-networks:
-  drone:
-    name: drone_network
+volumes:
+  drone-data:
+
