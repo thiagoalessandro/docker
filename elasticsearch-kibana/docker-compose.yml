@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    hostname: elasticsearch
+    image:     "docker.elastic.co/elasticsearch/elasticsearch:7.5.0"
+    environment:
+      - "http.host=0.0.0.0"
+      - "discovery.type=single-node"
+    mem_limit: 1624M
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+  kibana:
+    container_name: kibana
+    hostname: kibana
+    image: "docker.elastic.co/kibana/kibana:7.5.0"
+    environment:
+      - "ELASTICSEARCH_PASSWORD=Thiag0@0703"
+      - "ELASTICSEARCH_HOSTS=http://elasticsearch:9200"
+    ports:
+      - '5601:5601'
+    depends_on:
+      - elasticsearch
