@@ -23,3 +23,14 @@ services:
       - '5601:5601'
     depends_on:
       - elasticsearch
+  logstash:
+    container_name: logstash
+    hostname: logstash
+    image: "docker.elastic.co/logstash/logstash:7.5.0"
+    #volumes:
+      #- ./logstash/pipeline/:/usr/share/logstash/pipeline/
+      #- ./logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+    environment:
+      - "XPACK.MONITORING.ELASTICSEARCH.HOSTS=http://elasticsearch:9200"
+    depends_on:
+      - elasticsearch
