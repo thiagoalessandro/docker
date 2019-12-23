@@ -3,4 +3,6 @@
 #   https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
 
 - pipeline.id: main
-  path.config: "/usr/share/logstash/pipeline"
+  path.config: "/usr/share/logstash/pipeline/logstash-filebeat.conf"
+#- pipeline.id: log-spring-cloud-config
+#  path.config: "/usr/share/logstash/pipeline/log-spring-cloud-config.conf"

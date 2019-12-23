@@ -1,0 +1,14 @@
+#filebeat.inputs:
+  #- type: log
+    #paths:
+      #- /home/thiago/thiago/intellijProjects/SAMPLE/docker/elasticsearch-kibana/log/sample.log
+filebeat.inputs:
+  - type: docker
+    enabled: true
+    containers:
+      stream: all # can be all, stdout or stderr
+      ids:
+        - '*'
+output.logstash:
+  hosts: ["logstash:5044"]
+  index: filebeat
