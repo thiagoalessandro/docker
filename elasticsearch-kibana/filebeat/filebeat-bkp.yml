@@ -1,7 +1,7 @@
 #filebeat.inputs:
-  #- type: log
-    #paths:
-      #- /home/thiago/thiago/intellijProjects/SAMPLE/docker/elasticsearch-kibana/log/sample.log
+#- type: log
+#paths:
+#- /home/thiago/thiago/intellijProjects/SAMPLE/docker/elasticsearch-kibana/log/sample.log
 filebeat.inputs:
   - type: docker
     enabled: true
