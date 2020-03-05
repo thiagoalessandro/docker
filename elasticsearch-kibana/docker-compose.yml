@@ -23,19 +23,6 @@ services:
       - "5601:5601"
     depends_on:
       - elasticsearch
-  logstash:
-    container_name: logstash
-    hostname: logstash
-    image: "docker.elastic.co/logstash/logstash:7.5.0"
-    volumes:
-      - ./logstash/pipeline/:/usr/share/logstash/pipeline/
-      - ./logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
-    environment:
-      - "XPACK.MONITORING.ELASTICSEARCH.HOSTS=http://elasticsearch:9200"
-    ports:
-      - "5044:5044"
-    depends_on:
-      - elasticsearch
   filebeat:
     image: "docker.elastic.co/beats/filebeat:7.5.0"
     container_name: filebeat
@@ -52,5 +39,3 @@ services:
       #- "ELASTICSEARCH_PASSWORD=Thiag0@0703"
       #- ELASTICSEARCH_USERNAME=${ELASTICSEARCH_USERNAME:-elastic}
     command: ["--strict.perms=false"]
-    depends_on:
-      - logstash
