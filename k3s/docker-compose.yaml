@@ -5,6 +5,7 @@ version: '3'
 services:
 
   server:
+    container_name: k3s-server
     image: "rancher/k3s:${K3S_VERSION:-latest}"
     command: server
     tmpfs:
@@ -31,6 +32,7 @@ services:
     - 443:443    # Ingress controller port 443
 
   agent:
+    container_name: k3s-agent
     image: "rancher/k3s:${K3S_VERSION:-latest}"
     tmpfs:
     - /run
@@ -47,4 +49,5 @@ services:
     - K3S_TOKEN=${K3S_TOKEN:?err}
 
 volumes:
-  k3s-server: {}
+  k3s-server: 
+    name: k3s-server
